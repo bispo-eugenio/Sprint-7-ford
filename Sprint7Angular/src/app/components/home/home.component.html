@@ -1,0 +1,14 @@
+<app-header />
+<main class="home-container">
+    <dialog [open]="this.flagDialog" class="home-container__dialog">
+        <div class="d-flex justify-content-center align-items-center flex-column">
+            <div class="d-flex justify-content-between home-container__title-box">
+                <h3 class="home-container__dialog-title">Sistema de dados FORD</h3>
+                <div class="home-container__close-button" (click)="closeDialog()">
+                    <img src="/icon/close.svg" alt="Ícone do botão de fechar aba">
+                </div>
+            </div>
+            <p class="home-container__congratulation">Seja bem-vindo(a)</p>
+        </div>
+    </dialog>
+</main>
