@@ -49,3 +49,10 @@
     pointer-events: none;
     user-select: none;
 }
+
+.home-container__button {
+    width: 100px;
+    position: absolute;
+    margin-left: 0.25rem;   
+    top: 95%;
+}

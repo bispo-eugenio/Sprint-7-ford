@@ -1,16 +1,61 @@
 <app-header />
-<main class="dashboard-container">
-    <h2 class="dashboard-container__title">Dashboard FORD</h2>
-    <div class="dashboard-container__card-box">
+<main class="dashboard-container d-flex flex-column gap-3">
+    <h2 class="dashboard-container__title text-lg-center mb-5 mt-2">Dashboard FORD</h2>
+    <div class="dashboard-container__card-box d-flex justify-content-around">
         <div class="dashboard-containr__select-box">
-            <select>
-                <option value="0"></option>
+            <h4>Veículos</h4>
+            <select (change)="getSelectVehicle($event)">
+                <option disabled selected></option>
+                <option value="1">Ranger</option>
+                <option value="2">Mustang</option>
+                <option value="3">Territory</option>
+                <option value="4">Bronco Sport</option>
             </select>
         </div>
-        <div class="dashboard-containr__box">
-            <h3>TITULO</h3>
-            <p>DADO</p>
+        @if(this.vehicle.id){
+        <div class="dashboard-container__box">
+            <h4>Total de Vendas</h4>
+            <p>{{ this.vehicle.volumetotal }}</p>
             <small>Unid.</small>
         </div>
+        <div class="dashboard-container__box">
+            <h4>Conectados</h4>
+            <p>{{ this.vehicle.connected }}</p>
+            <small>Unid.</small>
+        </div>
+        <div class="dashboard-container__box">
+            <h4>Update Software</h4>
+            <p>{{ this.vehicle.softwareUpdates }}</p>
+            <small>Unid.</small>
+        </div>
+        }
     </div>
+    @if(this.vehicle.id){
+    <div class="image-container d-flex justify-content-center">
+        <img [src]="this.vehicle.img" alt="imagem de carro">
+    </div>
+    }
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">Código vin</th>
+                <th scope="col">Odômetro</th>
+                <th scope="col">Nível de Combustível</th>
+                <th scope="col">Status</th>
+                <th scope="col">Lat.</th>
+                <th scope="col">Long.</th>
+            </tr>
+        </thead>
+        <tbody>
+            <td id="search-input">
+                <input type="text" #vinInput>
+                <button (click)="searchByVin(vinInput.value)">buscar</button>
+            </td>
+            <td>{{foundVehiclesData?.odometro}}</td>
+            <td>{{foundVehiclesData?.nivelCombustivel}}</td>
+            <td>{{foundVehiclesData?.status}}</td>
+            <td>{{foundVehiclesData?.long}}</td>
+            <td>{{foundVehiclesData?.lat}}</td>
+        </tbody>
+    </table>
 </main>
